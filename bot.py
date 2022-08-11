@@ -38,16 +38,16 @@ async def messages_control(c: Client, m: Message):
 		msg = ''
 	
 	if msg == '/start':
-		await m.reply('╭───ⓘ🎐Hola @'+usern+' ─〄\n│\n├👨🏻‍💻Le doy la bienvenida a UwU Delete │simple y rapido con este bot podras │eliminar los archivos que has subido │a tu nube reenviandole a este bot un │enlace o un txt \n│\n├👨🏻‍💻Utilice el comando /help\n╰ⓘ @uwu_download_bot ─〄\n')
+		await m.reply('╭───ⓘ🧞Hola @'+usern+' ─〄\n│\n├😏Le doy la bienvenida a mi bots │⚡simple y rapido con este bot podras │🗑️eliminar los archivos que has subido │🚀a tu nube reenviandole a este bot un │🔗enlace o un txt \n│\n├🧞Utilice el comando /help\n╰ⓘ @David_7amayo 😎\n')
 	
 	if '/help' in msg:
-		mssg = '╭───ⓘComo usar el bot:\n│\n├Asegurarse de que el enlace o txt a │enviar al bot sea exactamente el que te │da el bot con el cual subes a la nube\n│\n├Asegurarse de que las credenciales, │es decir usuario, contraseña y host sean │correctos\n│\n├❔Este es un ejemplo\n│\n├/auth usuario contraseña\n│https://direccion.de.nube\n│\n├Puede añadir proxy para nubes que lo │requieran\n│\n├Este es un ejemplo\n│\n├/proxy socks5://SGWBDLWBSLEBWNW│LWIWBENM2WJKQWNWKWN2JWJ\n│\n├❔Nota: Una vez configure usuario, │contraseña y host de una nube y solo │quiere borrar de esa nube no debe │configurarla mas hasta que el bot se │reinicie\n│\n╰ⓘRespecto al proxy si se lo pones y este deja de funcionar puedes quitarlo usando /off'
+		mssg = '╭───ⓘComo usar el bot:\n│\n├Asegurarse de que el enlace o txt a │enviar al bot sea exactamente el que te │da el bot con el cual subes a la nube\n│\n├Asegurarse de que las credenciales, │es decir usuario, contraseña y host sean │correctos\n│\n├❔Este es un ejemplo\n│\n├/auth usuario contraseña\n│https://direccion.de.nube\n│\n├Puede añadir proxy para nubes que lo │requieran\n│\n├Este es un ejemplo\n│\n├/proxy socks5://SGWBDLWBSLEBWNW│LWIWBENM2WJKQWNWKWN2JWJ\n│\n├❔Nota: Una vez configure usuario, │contraseña y host de una nube y solo │quiere borrar de esa nube no debe │configurarla mas hasta que el bot se │reinicie\n│\n╰ⓘRespecto al proxy si se lo pones y este deja de funcionar puedes quitarlo usando /proxyoff'
 		await m.reply(mssg)
 			
 	if msg.startswith('/auth'):
 		splitmsg = msg.split(' ')
 		users[usern] = {'user':splitmsg[1],'passw':splitmsg[2],'host':splitmsg[3]}
-		await m.reply('Se guardaron las credenciales✅')
+		await m.reply('🧞Se guardaron las credenciales✅')
 		
 	if msg.startswith('/proxy'):
 		proxysplit = msg.split(' ')[1]
@@ -56,11 +56,11 @@ async def messages_control(c: Client, m: Message):
 		port = int(proxy_token[1])
 		proxy_final = dict(https=f'socks5://{ip}:{port}', http=f'socks5://{ip}:{port}')
 		proxysall[usern] = proxy_final
-		await m.reply('Proxy guardado✅')
+		await m.reply('✳️Proxy guardado✅')
 		
-	if '/off' in msg:
+	if '/poxyoff' in msg:
 		del proxysall[usern]
-		await m.reply('Se quito el proxy✅')
+		await m.reply('✴️Se quito el proxy❎')
 		
 	if msg.startswith('https') or msg.startswith('http'):
 		urls = m.text
@@ -75,19 +75,19 @@ async def messages_control(c: Client, m: Message):
 			urlsfix = urls.replace(f'?token={token}','')
 			
 		if users == {}:
-			await m.reply('Credenciales sin guardar💢')
+			await m.reply('❌Credenciales sin guardar❌')
 		else:
-			msgcheck = await m.reply("⏳Comprobando autorización...\n")
+			msgcheck = await m.reply("🍭Comprobando autorización⏳...\n")
 			
 			userdatat = users[usern]
 			ret = delete(userdatat['user'],userdatat['passw'],userdatat['host'],urlsfix,proxy)
 			
 			if 'melogee' in ret:
-				await msgcheck.edit("Credenciales correctas✅")
+				await msgcheck.edit("✳️Credenciales correctas✅")
 				if 'borre' in ret:
 					await msgcheck.edit(f"ENLACE eliminado exitosamente de la nube✅\n\nLogeate y compruebalo\n{urls}")
 			else:
-				await msgcheck.edit("Credenciales incorrectas❌")
+				await msgcheck.edit("✴️Credenciales incorrectas❎")
 	
 	if m.document:
 		proxy = None
@@ -95,10 +95,10 @@ async def messages_control(c: Client, m: Message):
 			proxy = proxysall[usern]
 			
 		if users == {}:
-			await m.reply('Credenciales sin guardar💢')
+			await m.reply('✴️Credenciales sin guardar❎')
 		else:
 			txt = await c.download_media(m.document)
-			msgcheck = await m.reply('⌛Comprobando autorización...')
+			msgcheck = await m.reply('🍭Comprobando autorización⏳...')
 				
 			userdatat = users[usern]
 			with open(txt, 'r') as txtfile:
@@ -116,7 +116,7 @@ async def messages_control(c: Client, m: Message):
 					
 					if 'melogee' in ret:
 						try:
-							await msgcheck.edit("Credenciales correctas✅")
+							await msgcheck.edit("✳️Credenciales correctas✅")
 						except:
 							pass
 						
@@ -128,10 +128,10 @@ async def messages_control(c: Client, m: Message):
 								pass
 							
 							if len(txtlines) == delurls:
-								await msgcheck.edit('╭ⓘ🎐TXT eliminado exitosamente\n│\n╰ⓘBot: @uwu_download_bot')
+								await msgcheck.edit('╭ⓘ🧞TXT eliminado🗑️ exitosamente✅\n│\n╰ⓘBot:🧞@DeleteDt_bot')
 								break
 					else:
-						await msgcheck.edit("Credenciales incorrectas❌")
+						await msgcheck.edit("✴️Credenciales incorrectas❎")
 						break
 
 
