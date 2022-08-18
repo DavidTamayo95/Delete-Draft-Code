@@ -38,7 +38,7 @@ async def messages_control(c: Client, m: Message):
 		msg = ''
 	
 	if msg == '/start':
-		await m.reply('╭───ⓘ🧞Hola @'+usern+' ─〄\n│\n├😏Le doy la bienvenida a mi bots   │⚡simple y rapido con este bot podras   │🗑️eliminar los archivos que has subido │🚀a tu nube reenviandole a este bot un   │🔗enlace o un txt \n│\n├🧞Utilice el comando /help\n╰ⓘ @David_7amayo 😎\n')
+		await m.reply('╭───ⓘ🧞Hola @'+usern+' ─〄\n│\n├😏Le doy la bienvenida a mi bots   │⚡simple y rapido con este bot podras   │🗑️eliminar los archivos que has subido │🚀a tu nube reenviandole a este bot un     │🔗enlace o un txt \n│\n├🧞Utilice el comando /help\n╰ⓘ @David_7amayo 😎\n')
 	
 	if '/help' in msg:
 		mssg = '╭───ⓘComo usar el bot:\n│\n├Asegurarse de que el enlace o txt a │enviar al bot sea exactamente el que te │da el bot con el cual subes a la nube\n│\n├Asegurarse de que las credenciales, │es decir usuario, contraseña y host sean │correctos\n│\n├❔Este es un ejemplo\n│\n├/auth usuario contraseña\n│https://direccion.de.nube\n│\n├Puede añadir proxy para nubes que lo │requieran\n│\n├Este es un ejemplo\n│\n├/proxy socks5://SGWBDLWBSLEBWNW│LWIWBENM2WJKQWNWKWN2JWJ\n│\n├❔Nota: Una vez configure usuario, │contraseña y host de una nube y solo │quiere borrar de esa nube no debe │configurarla mas hasta que el bot se │reinicie\n│\n╰ⓘRespecto al proxy si se lo pones y este deja de funcionar puedes quitarlo usando /proxyoff'
@@ -47,7 +47,7 @@ async def messages_control(c: Client, m: Message):
 	if msg.startswith('/auth'):
 		splitmsg = msg.split(' ')
 		users[usern] = {'user':splitmsg[1],'passw':splitmsg[2],'host':splitmsg[3]}
-		await m.reply('🧞Se guardaron las credenciales✅')
+		await m.reply('🧞Se guardaron las credenciales✅') 
 		
 	if msg.startswith('/proxy'):
 		proxysplit = msg.split(' ')[1]
