@@ -38,7 +38,7 @@ async def messages_control(c: Client, m: Message):
 		msg = ''
 	
 	if msg == '/start':
-		await m.reply('╭───ⓘ🧞Hola @'+usern+' ─〄\n│\n├😏Le doy la bienvenida a mi bots │⚡simple y rapido con este bot podras │🗑️eliminar los archivos que has subido │🚀a tu nube reenviandole a este bot un │🔗enlace o un txt \n│\n├🧞Utilice el comando /help\n╰ⓘ @David_7amayo 😎\n')
+		await m.reply('╭───ⓘ🧞Hola @'+usern+' ─〄\n│\n├😏Le doy la bienvenida a mi bots   │⚡simple y rapido con este bot podras   │🗑️eliminar los archivos que has subido │🚀a tu nube reenviandole a este bot un   │🔗enlace o un txt \n│\n├🧞Utilice el comando /help\n╰ⓘ @David_7amayo 😎\n')
 	
 	if '/help' in msg:
 		mssg = '╭───ⓘComo usar el bot:\n│\n├Asegurarse de que el enlace o txt a │enviar al bot sea exactamente el que te │da el bot con el cual subes a la nube\n│\n├Asegurarse de que las credenciales, │es decir usuario, contraseña y host sean │correctos\n│\n├❔Este es un ejemplo\n│\n├/auth usuario contraseña\n│https://direccion.de.nube\n│\n├Puede añadir proxy para nubes que lo │requieran\n│\n├Este es un ejemplo\n│\n├/proxy socks5://SGWBDLWBSLEBWNW│LWIWBENM2WJKQWNWKWN2JWJ\n│\n├❔Nota: Una vez configure usuario, │contraseña y host de una nube y solo │quiere borrar de esa nube no debe │configurarla mas hasta que el bot se │reinicie\n│\n╰ⓘRespecto al proxy si se lo pones y este deja de funcionar puedes quitarlo usando /proxyoff'
@@ -77,7 +77,7 @@ async def messages_control(c: Client, m: Message):
 		if users == {}:
 			await m.reply('❌Credenciales sin guardar❌')
 		else:
-			msgcheck = await m.reply("🍭Comprobando autorización⏳...\n")
+			msgcheck = await m.reply("⏳\n")
 			
 			userdatat = users[usern]
 			ret = delete(userdatat['user'],userdatat['passw'],userdatat['host'],urlsfix,proxy)
@@ -98,7 +98,7 @@ async def messages_control(c: Client, m: Message):
 			await m.reply('✴️Credenciales sin guardar❎')
 		else:
 			txt = await c.download_media(m.document)
-			msgcheck = await m.reply('🍭Comprobando autorización⏳...')
+			msgcheck = await m.reply('⏳')
 				
 			userdatat = users[usern]
 			with open(txt, 'r') as txtfile:
@@ -123,12 +123,12 @@ async def messages_control(c: Client, m: Message):
 						if 'borre' in ret:
 							delurls+= 1
 							try:
-								await msgcheck.edit(f"Borrando {delurls} urls de la nube...☁")
+								await msgcheck.edit(f"🧞Borrando {delurls} urls de la nube...☁")
 							except:
 								pass
 							
 							if len(txtlines) == delurls:
-								await msgcheck.edit('╭ⓘ🧞TXT eliminado🗑️ exitosamente✅\n│\n╰ⓘBot:🧞@DeleteDt_bot')
+								await msgcheck.edit('╭ⓘ🧞TXT eliminado exitosamente✅\n│\n╰ⓘ🧞Bot:@DeleteDt_bot')
 								break
 					else:
 						await msgcheck.edit("✴️Credenciales incorrectas❎")
